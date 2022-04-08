@@ -31,30 +31,41 @@ void setup() {// Inicio de void setup ()
 void loop() {// Inicio de void loop
   // put your main code here, to run repeatedly:
 
-  timeStart = micros ();
+  timeStart = micros ();//Inicia el conteo de tiempo
 
+  //Ejecuta el contador de anillo 10 mil veces
   for (int i = 0; i < 10000; i++) {
-    dato++;
+    dato++;//Incremento
+    //Comparación
     if (dato > 8) {
       dato = 0;
     }
   }
 
-  timeFinish = micros ();
+  timeFinish = micros ();//Termina el conteo de tiempo
+
+  //Reporte en monitor serial
   Serial.print ("Con if ");
   Serial.println (timeFinish - timeStart); //Imprimir el valor del contador
-  delay (10000);
+  delay (10000); //Espera antes de la siguiente prueba
 
-  timeStart = micros ();
+  timeStart = micros ();//Inicia el conteo de tiempo
 
+  //Ejecuta el contador de anillo 10 mil veces
   for (int i = 0; i < 10000; i++) {
     dato++;
+    //Incremento
+    //Modulo
     dato %= 8;
   }
 
-  timeFinish = micros ();
+  timeFinish = micros ();//Termina el conteo de tiempo
+
+  //Reporte en monitor serial
   Serial.print ("Con operadores ");
   Serial.println (timeFinish - timeStart); //Imprimir el valor del contador
+
+  //Espera antes de la siguiente prueba
   delay (10000);
 
 }// Fin de void loop
